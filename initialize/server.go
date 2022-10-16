@@ -1,4 +1,4 @@
-package core
+package initialize
 
 import (
 	"casbin_kit/internal/router"
@@ -13,9 +13,7 @@ type server interface {
 }
 
 func RunWindowsServer() {
-
 	Router := router.NewRouter()
-
 	port := ":8888"
 	s := initServer(port, Router)
 	// 保证文本顺序输出

@@ -15,9 +15,6 @@ type Response struct {
 }
 
 func (r *Response) Error() string {
-	//if r.ERR != nil {
-	//	return r.ERR.Error()
-	//}
 	return r.Msg
 }
 
@@ -88,22 +85,4 @@ func SprintfResponseMsg(res *Response, args ...interface{}) *Response {
 	}
 	res.Msg = fmt.Sprintf(res.Msg, args...)
 	return res
-}
-
-
-func Res(c *gin.Context, err error, msg ...string) {
-	var res *Response
-	if err != nil {
-		if e, ok := err.(*Response); ok {
-			res = e
-		} else {
-			res = ErrInternalServer
-			if len(msg) > 0 && msg[0] != "" {
-				res.Msg = msg[0]
-			}
-		}
-	} else {
-		res = ErrInternalServer
-	}
-	c.JSON(res.HttpStatus, res)
 }

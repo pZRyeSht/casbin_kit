@@ -2,8 +2,7 @@ package main
 
 import (
 	"casbin_kit/global"
-	"casbin_kit/internal/core"
-	"casbin_kit/pkg"
+	"casbin_kit/initialize"
 )
 
 // @title kit casbin
@@ -15,6 +14,10 @@ import (
 // @name token
 // @BasePath /
 func main() {
-	global.CONF = pkg.Viper()
-	core.RunWindowsServer()
+	// 解析配置文件
+	global.CONF = initialize.Viper()
+	// 初始化数据库
+	global.DBEngine = initialize.GormMysql()
+	// 初始化路由
+	initialize.RunWindowsServer()
 }

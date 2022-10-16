@@ -1,4 +1,4 @@
- package router
+package router
 
 import (
 	v1 "casbin_kit/internal/api/v1"
@@ -26,4 +26,3 @@ func NewRouter() *gin.Engine {
 	}
 	return r
 }
-

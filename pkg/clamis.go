@@ -17,7 +17,7 @@ func GetClaims(c *gin.Context) (*model.CustomClaims, error) {
 	return &model.CustomClaims{
 		BaseClaims: model.BaseClaims{
 			ID:     1,
-			AuthId: "admin",
+			RoleId: 0,
 		},
 		BufferTime:     0,
 		StandardClaims: jwt.StandardClaims{},

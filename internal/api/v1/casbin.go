@@ -27,7 +27,7 @@ func NewCasbin() Casbin {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/casbin [post]
 func (c Casbin) Create(ctx *gin.Context) {
-	param := kitmodel.CasbinCreateRequest{}
+	var param kitmodel.CasbinCreateRequest
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		log.Printf("ShouldBindJSON errs: %v", err)
 		pkg.FailWithMessage(fmt.Sprintf("参数解析失败 %s", err.Error()), ctx)
@@ -35,11 +35,12 @@ func (c Casbin) Create(ctx *gin.Context) {
 	}
 
 	// 进行插入操作
-	svc := service.NewService(ctx)
-	if err := svc.CasbinCreate(&param); err != nil {
+	svc := service.CasbinServiceApp
+	fmt.Println(param)
+	if err := svc.CreateCasbin(param.RoleId, param.CasbinInfos); err != nil {
 		log.Printf("svc.CasbinCreate err: %v", err)
-
 		pkg.FailWithMessage(fmt.Sprintf("权限验证不通过 %s", err.Error()), ctx)
+		return
 	}
 	pkg.OkWithMessage("权限增加成功", ctx)
 	return
@@ -63,15 +64,8 @@ func (c Casbin) List(ctx *gin.Context) {
 		return
 	}
 	// 业务逻辑处理
-	svc := service.NewService(ctx)
-	casbins := svc.CasbinList(&param)
-	var respList []kitmodel.CasbinInfo
-	for _, host := range casbins {
-		respList = append(respList, kitmodel.CasbinInfo{
-			Path:   host[1],
-			Method: host[2],
-		})
-	}
-	pkg.OkWithDetailed(respList, "权限列表获取成功", ctx)
+	svc := service.CasbinServiceApp
+	casbins := svc.GetPolicyPathByAuthorityId(param.RoleID)
+	pkg.OkWithDetailed(casbins, "权限列表获取成功", ctx)
 	return
 }
