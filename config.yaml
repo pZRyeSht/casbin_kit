@@ -20,9 +20,9 @@ Database:
   # 主机
   Host: "127.0.0.1:3306"
   # 数据库名
-  DBName: casbin_test
+  DBName: casbin_rule
   # 表前缀
-  TablePrefix: ops_
+  TablePrefix: alice_
   # 字符集
   Charset: utf8
   # 解析

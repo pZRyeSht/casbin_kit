@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"casbin_kit/internal/service"
-	"casbin_kit/pkg"
 	"fmt"
+	"github.com/EscAlice/casbin_kit/internal/service"
+	"github.com/EscAlice/casbin_kit/pkg"
 	"github.com/gin-gonic/gin"
 	"log"
 	"strconv"

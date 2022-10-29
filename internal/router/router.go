@@ -1,8 +1,8 @@
 package router
 
 import (
-	v1 "casbin_kit/internal/api/v1"
-	"casbin_kit/internal/middleware"
+	v1 "github.com/EscAlice/casbin_kit/internal/api/v1"
+	"github.com/EscAlice/casbin_kit/internal/middleware"
 	"github.com/gin-gonic/gin"
 )
 

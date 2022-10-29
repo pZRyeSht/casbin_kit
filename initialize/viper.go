@@ -1,9 +1,9 @@
 package initialize
 
 import (
-	"casbin_kit/global"
 	"flag"
 	"fmt"
+	"github.com/EscAlice/casbin_kit/global"
 	"github.com/fsnotify/fsnotify"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"

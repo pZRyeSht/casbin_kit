@@ -1,8 +1,8 @@
 package main
 
 import (
-	"casbin_kit/global"
-	"casbin_kit/initialize"
+	"github.com/EscAlice/casbin_kit/global"
+	"github.com/EscAlice/casbin_kit/initialize"
 )
 
 // @title kit casbin

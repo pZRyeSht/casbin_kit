@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"casbin_kit/internal/model"
+	"github.com/EscAlice/casbin_kit/internal/model"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
 )

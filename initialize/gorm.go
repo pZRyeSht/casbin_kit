@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"casbin_kit/global"
 	"fmt"
+	"github.com/EscAlice/casbin_kit/global"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
